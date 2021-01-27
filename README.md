@@ -1,13 +1,13 @@
 A tool to hack Telegram Desktop on Windows OS.
 --------------------------------------------------------------------------------------------------------------------------------------------
 what does this script do?
-
+--------------------------------------------------------------------------------------------------------------------------------------------
   It searches in drive C to find a "tdata" folder. after finding it, makes a zip file of some of its contents that we need to access
 the telegram account, and it will doing this for each single "tdata" folder. after finishing this process, it will zip all of the
 zip files into one. then sendes an email from a trial email to the reciever email (you) with the zip file attached.
 
 How should you use it?
-
+--------------------------------------------------------------------------------------------------------------------------------------------
 1: Change the reciever gmail to your gmail, so you can recieve the "tdata" folder files.
 
 2: Export a .exe file from this .py file here usuing pyinstaller module.
@@ -25,7 +25,7 @@ How should you use it?
 6: Congratulations you made it! Now you are in the target's account!!
 
 Which Cases this tool wouldn't work?
-
+--------------------------------------------------------------------------------------------------------------------------------------------
 1: Obviously, if the target doesn't have Telegram Desktop or uses another OS (not Windows)!!! 
 
     1-a: Maybe I decide to support linux OS in the next version!
@@ -39,5 +39,5 @@ Which Cases this tool wouldn't work?
     3-b: I will try to solve this problem in the next version of the tool :))
 
 Wanna help to improve the script?
-
+--------------------------------------------------------------------------------------------------------------------------------------------
 Obviously, you can fork and clone the reposiory, make your changes and send a pull request.
