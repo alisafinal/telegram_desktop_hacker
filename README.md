@@ -34,4 +34,5 @@ Which Cases this tool wouldn't work?
    3-b: I will try to solve this problem in the next version of the tool :))
 
 Wanna help to improve the script?
+
 Obviously, you can fork and clone the reposiory, make your changes and send a pull request.
