@@ -27,6 +27,7 @@ How should you use it?
 Which Cases this tool wouldn't work?
 
 1: Obviously, if the target doesn't have Telegram Desktop or uses another OS (not Windows)!!! 
+
     1-a: Maybe I decide to support linux OS in the next version!
 
 2: If the target execute the file while he/she is offline :))
