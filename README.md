@@ -1,6 +1,6 @@
 A tool to hack Telegram Desktop on Windows OS.
 --------------------------------------------------------------------------------------------------------------------------------------------
-what does this script do?
+What does this script do?
 --------------------------------------------------------------------------------------------------------------------------------------------
   It searches in drive C to find a "tdata" folder. after finding it, makes a zip file of some of its contents that we need to access
 the telegram account, and it will doing this for each single "tdata" folder. after finishing this process, it will zip all of the
