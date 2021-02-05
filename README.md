@@ -32,7 +32,7 @@ Which Cases this tool wouldn't work?
 
 3: If there is an anti-virus software on the target's PC, depending on the software's power it may delete the .exe file.
 
-    3-a: To solve this problem, you can hide the .exe file in an image as i mentioned before.
+    3-a: To solve this problem, you can hide the .exe file in an image as I mentioned before.
    
     3-b: I will try to solve this problem in the next version of the tool :))
 
