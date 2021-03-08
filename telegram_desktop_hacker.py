@@ -1,13 +1,13 @@
-import email
 import smtplib
 import ssl
+import email
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import os
-from zipfile import ZipFile
 from os.path import basename
+from zipfile import ZipFile
 import shutil
 
 
