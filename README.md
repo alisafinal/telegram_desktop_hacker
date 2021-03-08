@@ -1,5 +1,7 @@
 A Python script to hack Telegram Desktop on Windows OS.
 --------------------------------------------------------------------------------------------------------------------------------------------
+There is no dependencies! All used modules are python built-in modules!
+--------------------------------------------------------------------------------------------------------------------------------------------
 What does this script do?
 --------------------------------------------------------------------------------------------------------------------------------------------
   It searches in drive C to find a "tdata" folder. after finding it, makes a zip file of some of its contents that we need to access
