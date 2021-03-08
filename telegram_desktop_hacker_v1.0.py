@@ -1,5 +1,3 @@
-# Script by Ali Safinal
-
 import email
 import smtplib
 import ssl
